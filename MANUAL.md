@@ -34,20 +34,30 @@
 
 ## Getting started
 
-**1. Install Ollama** from [ollama.com](https://ollama.com) and get some models:
+**1. Install Ollama** from [ollama.com](https://ollama.com), then get **the biggest model your
+computer can run.** EMMA's work is only as good as the model doing it: a bigger model makes
+fewer mistakes, needs fewer tries, and copes with bigger tasks. Choose by how much memory
+your graphics card has:
+
+| Graphics memory | Model |
+|---|---|
+| **24 GB or more** | `ollama pull qwen3-coder:30b` or `ollama pull qwen3:32b` |
+| **12–16 GB** | `ollama pull qwen3:14b` |
+| **6–8 GB** | `ollama pull qwen3:8b` — the smallest we'd recommend |
+
+For the best results of all, add a **Claude or OpenAI key** in the Models panel.
+
+Two more are worth having:
 
 ```bash
-ollama pull qwen3:8b          # for EMMA — good at using her tools
 ollama pull qwen2.5-coder     # for completions as you type, and code questions
 ollama pull nomic-embed-text  # for searching your project by meaning
 ```
 
-Only the first one is needed to start.
-
-**Choosing a model for EMMA:** what matters is how reliably a model uses tools — reading
-files, editing them, running tests — not whether it has "coder" in its name. `qwen3:8b` is a
-good start on an ordinary graphics card. The bigger the model you can run, the fewer
-mistakes she'll make; you'll catch those in review either way.
+**What makes a good model for EMMA** is how reliably it uses tools — reading files, editing
+them, running tests — and size decides that more than anything, including "coder" in the
+name. A small model will still work, but it takes more tries, and you'll reject more of its
+changes in review.
 
 **2. Install Build Emma** from the [latest release](../../releases/latest):
 

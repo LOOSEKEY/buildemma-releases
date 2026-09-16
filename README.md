@@ -40,9 +40,18 @@ She reads your project, makes the change, runs your tests, and fixes what fails.
 says *"Windows protected your PC"*. Click **More info → Run anyway**. Unsigned means no
 certificate has been bought — not that nothing was checked.
 
-**You'll also need [Ollama](https://ollama.com)** with a model: `ollama pull qwen3:8b` is the
-one EMMA does best with on an ordinary graphics card. Claude and OpenAI are optional —
-bring your own key, and it's kept in an encrypted vault on your machine.
+**You'll also need [Ollama](https://ollama.com), and the biggest model your computer can run.**
+EMMA's work is only as good as the model doing it — a bigger model makes fewer mistakes and
+handles bigger jobs.
+
+| Graphics memory | Model |
+|---|---|
+| **24 GB or more** | `ollama pull qwen3-coder:30b` or `ollama pull qwen3:32b` |
+| **12–16 GB** | `ollama pull qwen3:14b` |
+| **6–8 GB** | `ollama pull qwen3:8b` — the smallest we'd recommend |
+
+For the best results of all, add a Claude or OpenAI key — bring your own, and it's kept in an
+encrypted vault on your machine.
 
 ## Try it, then buy it once
 
