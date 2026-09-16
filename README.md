@@ -1,40 +1,82 @@
-# Build Emma
+<h1 align="center">Build Emma</h1>
 
-**Build software with a resident agent.**
+<p align="center">
+  <b>Build software with a resident agent — on your own models, on your own machine.</b>
+</p>
 
-[buildemma.com](https://buildemma.com) · [⬇️ Download](../../releases/latest) · [Discord](https://discord.gg/cJVHKNeCxP)
+<p align="center">
+  <a href="https://buildemma.com"><b>buildemma.com</b></a> ·
+  <a href="../../releases/latest"><b>⬇️ Download</b></a> ·
+  <a href="MANUAL.md"><b>Manual</b></a> ·
+  <a href="https://discord.gg/cJVHKNeCxP"><b>Discord</b></a> ·
+  <a href="SECURITY.md"><b>Security</b></a>
+</p>
 
-A workspace you can daily-drive, collaboration that needs no server, and EMMA — an agent that runs on *your* models, on *your* machine, and never changes a line you haven't approved.
+---
 
-`local-first · no account · no telemetry · works offline · cloud models opt-in`
+Build Emma is a desktop app for writing code. It has everything you'd expect from an
+editor you use all day — files, tabs, search, a terminal, git, a debugger, language
+support — and at the heart of it is **EMMA**, an agent you can hand real work to.
 
-> **This repo is just the downloads.** There's no source code here. It's the public home for the installers, and for the update check inside the app.
+She reads your project, makes the change, runs your tests, and fixes what fails. Then she
+**stops and shows you the diff.** Nothing touches your code until you've read it and said yes.
+
+`local-first · no account · no telemetry · works offline · cloud models optional`
+
+> **This repo is just the downloads.** There's no source code here. It's where the
+> installers live, and where Build Emma looks to see if there's an update.
 
 ## Download
 
-Grab the installer for your system from the **[latest release](../../releases/latest)**.
+**[Get the latest release →](../../releases/latest)**
 
 | | |
 |---|---|
-| **Linux** | `.AppImage` (portable, no root), `.deb`, `.rpm` |
-| **Windows** | `-setup.exe` installer, `.msi` |
-| **macOS** | Not yet. It builds, but hasn't had its hands-on install check. |
+| **Windows** | `Build.Emma_…_x64-setup.exe` — the installer, and the one that updates itself · or the `.msi` |
+| **Linux** | `Build.Emma_…_amd64.AppImage` — portable: mark it executable and run it · or the `.deb` (Debian, Ubuntu) / `.rpm` (Fedora) |
+| **macOS** | Not yet. It builds, but it hasn't had its install testing, and it won't ship untested. |
 
-**Windows:** the installer isn't code-signed yet, so Windows shows *"Windows protected your PC"* on first run. Click **More info → Run anyway**.
+**On Windows**, the installer isn't code-signed yet, so the first time you run it Windows
+says *"Windows protected your PC"*. Click **More info → Run anyway**. Unsigned means no
+certificate has been bought — not that nothing was checked.
 
-## What you need
+**You'll also need [Ollama](https://ollama.com)** with a model: `ollama pull qwen3:8b` is the
+one EMMA does best with on an ordinary graphics card. Claude and OpenAI are optional —
+bring your own key, and it's kept in an encrypted vault on your machine.
 
-- **[Ollama](https://ollama.com)** running with at least one model, e.g. `ollama pull qwen3:8b`
-- *Optional:* a Claude or OpenAI key for cloud models. It's kept in the app's encrypted vault.
+## Try it, then buy it once
+
+**Free for 30 days, with everything included.** If it earns a place on your machine, it's
+**£89, once** — [buy at buildemma.com](https://buildemma.com/#buy).
+
+- **No subscription, no account.** Your key arrives by email a minute after paying.
+- **It's checked on your own computer.** Nothing phones home, and nothing stops working if
+  we ever do.
+- **Every 2.x update is included**, on up to two of your own computers.
+- **30-day refunds**, no questions asked.
+
+If the trial ends and you haven't bought, EMMA stops making changes — but your files, the
+editor, the terminal and git all keep working, and nothing is locked or deleted.
+
+The full terms are short and in plain English: [licence](https://buildemma.com/licence) ·
+[privacy](https://buildemma.com/privacy).
 
 ## Updates
 
-Build Emma checks this repo for a newer release, tells you when there is one, and installs it when you say so. Every update is signed, and the app refuses one that isn't.
+Build Emma checks this page for a newer version when it starts, tells you when there is
+one, and installs it **only when you say so**. Every update is signed, and your copy refuses
+one that isn't. You can turn the check off in **Settings → Updates**.
 
 ## Checking a download
 
-Each release lists a SHA-256 checksum for every file.
+Every release lists a SHA-256 checksum for each file, and includes them in `SHA256SUMS`:
+
+```bash
+sha256sum -c SHA256SUMS --ignore-missing
+```
 
 ## Help
 
-[Discord](https://discord.gg/cJVHKNeCxP) · Gregorymoores@proton.me
+- **How do I…?** — the [manual](MANUAL.md)
+- **Something's broken, or you've an idea** — [Discord](https://discord.gg/cJVHKNeCxP), or email **Gregorymoores@proton.me**
+- **A security problem** — please read [SECURITY.md](SECURITY.md) first
