@@ -63,8 +63,14 @@ changes in review.
 
 - **Windows:** the `-setup.exe`. The first time, Windows says *"Windows protected your PC"* —
   click **More info → Run anyway**. (It isn't code-signed yet.)
-- **Linux:** the `.AppImage` — right-click → Properties → allow executing, or
-  `chmod +x` it — then run it. Or install the `.deb` / `.rpm`.
+- **Linux:** two choices.
+  - The `.deb` (Debian, Ubuntu, Mint, Pop!_OS) or `.rpm` (Fedora) **installs** Build Emma.
+    It appears in your app menu, and you can pin it to your dock or panel. Open the file
+    with your software installer, or run `sudo apt install ./Build.Emma_…_amd64.deb`.
+  - The `.AppImage` is **portable**. Right-click → Properties → allow executing (or
+    `chmod +x` it), then run it. It runs from wherever the file sits and **doesn't add
+    itself to your app menu**, so there's nothing to pin. If you want a menu entry, use the
+    `.deb` / `.rpm` instead, or a tool such as Gear Lever that adds AppImages to the menu.
 
 Everything else is inside: the editor, EMMA's engine, and language support for
 TypeScript, JavaScript and Python.

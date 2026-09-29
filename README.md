@@ -33,7 +33,7 @@ She reads your project, makes the change, runs your tests, and fixes what fails.
 | | |
 |---|---|
 | **Windows** | `Build.Emma_…_x64-setup.exe` — the installer, and the one that updates itself · or the `.msi` |
-| **Linux** | `Build.Emma_…_amd64.AppImage` — portable: mark it executable and run it · or the `.deb` (Debian, Ubuntu) / `.rpm` (Fedora) |
+| **Linux** | `Build.Emma_…_amd64.deb` (Debian, Ubuntu) / `.rpm` (Fedora) — installs it into your app menu, ready to pin · or `Build.Emma_…_amd64.AppImage` — portable: mark it executable and run it. It runs from wherever the file is and doesn't add itself to your app menu |
 | **macOS** | Not yet. It builds, but it hasn't had its install testing, and it won't ship untested. |
 
 **On Windows**, the installer isn't code-signed yet, so the first time you run it Windows
