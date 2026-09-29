@@ -322,8 +322,11 @@ set a passphrase), trusted collaborators, your trial date and licence key, and t
 ## If something's wrong
 
 **It says the engine didn't start.** On a slow first launch it can take a while — Build Emma
-waits up to two minutes on its own. If it still fails, the reason is in `launch.log`, which is
-worth attaching to any report:
+waits up to two minutes on its own. If it still fails, press **Check for a fix** on that
+screen: if a newer version exists, you can install it from there. (On Linux, 2.0.0 had
+exactly this problem and no button — if that's you, download 2.0.1 or later from the
+[latest release](../../releases/latest) and install it over the top.) The reason it failed
+is in `launch.log`, which is worth attaching to any report:
 
 | | |
 |---|---|
