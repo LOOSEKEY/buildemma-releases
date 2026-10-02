@@ -45,6 +45,9 @@ your graphics card has:
 | **12–16 GB** | `ollama pull qwen3:14b` |
 | **6–8 GB** | `ollama pull qwen3:8b` — the smallest we'd recommend |
 
+On a Mac with Apple Silicon, read those sizes as your Mac's memory. Intel Macs run models on
+the processor, which is slow, so a Claude or OpenAI key helps most there.
+
 For the best results of all, add a **Claude or OpenAI key** in the Models panel.
 
 Two more are worth having:
@@ -63,6 +66,12 @@ changes in review.
 
 - **Windows:** the `-setup.exe`. The first time, Windows says *"Windows protected your PC"* —
   click **More info → Run anyway**. (It isn't code-signed yet.)
+- **Mac:** the `aarch64.dmg` for Apple Silicon (M1 and newer), or the `x64.dmg` for an Intel
+  Mac. Open it and drag Build Emma into Applications. The first time you open it, macOS
+  says it can't check it, because it isn't signed with an Apple developer certificate yet.
+  Click **Done**, then **System Settings → Privacy & Security → Open Anyway**. (On macOS 14
+  or older, right-click the app → **Open**.) If macOS says the app *is damaged*, run
+  `xattr -cr "/Applications/Build Emma.app"` in Terminal and open it again.
 - **Linux:** two choices.
   - The `.deb` (Debian, Ubuntu, Mint, Pop!_OS) or `.rpm` (Fedora) **installs** Build Emma.
     It appears in your app menu, and you can pin it to your dock or panel. Open the file
@@ -332,6 +341,7 @@ is in `launch.log`, which is worth attaching to any report:
 |---|---|
 | **Windows** | `%LOCALAPPDATA%\dev.loosekey.buildemma\logs\launch.log` |
 | **Linux** | `~/.local/share/dev.loosekey.buildemma/logs/launch.log` |
+| **Mac** | `~/Library/Logs/dev.loosekey.buildemma/launch.log` |
 
 **No models in the picker** — Ollama isn't running, or has no models. Try `ollama list`.
 

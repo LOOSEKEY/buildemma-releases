@@ -34,11 +34,18 @@ She reads your project, makes the change, runs your tests, and fixes what fails.
 |---|---|
 | **Windows** | `Build.Emma_…_x64-setup.exe` — the installer, and the one that updates itself · or the `.msi` |
 | **Linux** | `Build.Emma_…_amd64.deb` (Debian, Ubuntu) / `.rpm` (Fedora) — installs it into your app menu, ready to pin · or `Build.Emma_…_amd64.AppImage` — portable: mark it executable and run it. It runs from wherever the file is and doesn't add itself to your app menu |
-| **macOS** | Not yet. It builds, but it hasn't had its install testing, and it won't ship untested. |
+| **macOS** | `Build.Emma_…_aarch64.dmg` for Macs with Apple Silicon (M1 and newer) · `Build.Emma_…_x64.dmg` for Macs with an Intel processor |
 
 **On Windows**, the installer isn't code-signed yet, so the first time you run it Windows
 says *"Windows protected your PC"*. Click **More info → Run anyway**. Unsigned means no
 certificate has been bought — not that nothing was checked.
+
+**On a Mac**, open the `.dmg` and drag Build Emma into Applications. It isn't signed with an
+Apple developer certificate yet, so the first time you open it, macOS says it can't check it.
+Click **Done**, then go to **System Settings → Privacy & Security**, scroll down and click
+**Open Anyway**. (On macOS 14 or older, right-click the app and choose **Open**.) If macOS
+says the app *is damaged*, run `xattr -cr "/Applications/Build Emma.app"` in Terminal and open
+it again. The Mac version is new, so if anything doesn't work, tell us on Discord.
 
 **You'll also need [Ollama](https://ollama.com), and the biggest model your computer can run.**
 EMMA's work is only as good as the model doing it — a bigger model makes fewer mistakes and
@@ -49,6 +56,9 @@ handles bigger jobs.
 | **24 GB or more** | `ollama pull qwen3-coder:30b` or `ollama pull qwen3:32b` |
 | **12–16 GB** | `ollama pull qwen3:14b` |
 | **6–8 GB** | `ollama pull qwen3:8b` — the smallest we'd recommend |
+
+On a Mac with Apple Silicon, read those sizes as your Mac's memory. Intel Macs run models on
+the processor, which is slow, so a Claude or OpenAI key helps most there.
 
 For the best results of all, add a Claude or OpenAI key — bring your own, and it's kept in an
 encrypted vault on your machine.
