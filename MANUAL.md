@@ -156,6 +156,11 @@ and **asking before she runs any command**. When she's finished you get a **diff
 change, file by file, and you can untick any part you don't want. **Nothing is written until
 you approve it.**
 
+**To stop her,** press **Stop** next to *working…* (from 2.0.3; on Mac, in the next Mac
+version). She stops at once, and anything she'd already changed comes back as a diff to
+approve or reject — stopping never changes your files. Stop works for a task you ran and for
+queued tasks, not yet for the assembly line, crew or night shift.
+
 **She checks her own work.** If your project has tests (or a type-check, lint or build), she
 runs them against her changes before showing you, and fixes what fails. The badge on the diff
 tells you whether they pass. If she was asked for a change and made none, her summary says
@@ -349,7 +354,7 @@ is in `launch.log`, which is worth attaching to any report:
 than five minutes in one step, which happens on smaller graphics cards. Update to 2.0.2 or
 later. **"…took longer than 20 minutes on one step"** means the model really was stuck, so
 EMMA stopped the task rather than wait forever. Try a faster model, or give her a smaller
-task.
+task. From 2.0.3 you can also press **Stop** yourself rather than wait.
 
 **No errors underlined for Rust, Go and others** — install that language's server (Settings
 lists the command), then reopen the file.
