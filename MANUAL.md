@@ -345,6 +345,12 @@ is in `launch.log`, which is worth attaching to any report:
 
 **No models in the picker** — Ollama isn't running, or has no models. Try `ollama list`.
 
+**EMMA stops with "fetch failed"** — before 2.0.2, EMMA gave up if a model thought for more
+than five minutes in one step, which happens on smaller graphics cards. Update to 2.0.2 or
+later. **"…took longer than 20 minutes on one step"** means the model really was stuck, so
+EMMA stopped the task rather than wait forever. Try a faster model, or give her a smaller
+task.
+
 **No errors underlined for Rust, Go and others** — install that language's server (Settings
 lists the command), then reopen the file.
 
