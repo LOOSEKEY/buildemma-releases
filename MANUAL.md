@@ -156,10 +156,16 @@ and **asking before she runs any command**. When she's finished you get a **diff
 change, file by file, and you can untick any part you don't want. **Nothing is written until
 you approve it.**
 
-**To stop her,** press **Stop** next to *working…* (from 2.0.3; on Mac, in the next Mac
-version). She stops at once, and anything she'd already changed comes back as a diff to
-approve or reject — stopping never changes your files. Stop works for a task you ran and for
-queued tasks, not yet for the assembly line, crew or night shift.
+**To stop her,** press **Stop** next to *working…* (on Mac, in the next Mac version). She
+stops at once, any command she was running ends with her, and anything she'd already changed
+comes back as a diff to approve or reject. Stopping never changes your files.
+
+From 2.0.4 Stop works on everything you start: tasks, the queue, the assembly line, the crew,
+the night shift and the Factory. Work that has no diff is dropped rather than half finished:
+a teammate in another project writes nothing there, and the night shift drops the task it's
+on and skips the rest. Anything already finished stays, and the checkpoint from before it can
+undo it. Hover over Stop and it tells you which applies. A scheduled night shift has no Stop,
+because nobody's there to press it, but a checkpoint is taken before it starts.
 
 **She checks her own work.** If your project has tests (or a type-check, lint or build), she
 runs them against her changes before showing you, and fixes what fails. The badge on the diff
