@@ -15,8 +15,9 @@
 ---
 
 Build Emma is a desktop app for writing code. It has everything you'd expect from an
-editor you use all day — files, tabs, search, a terminal, git, a debugger, language
-support — and at the heart of it is **EMMA**, an agent you can hand real work to.
+editor you use all day — files, tabs, search, a terminal, git all the way to a pull request,
+a debugger, language support — and at the heart of it is **EMMA**, an agent you can hand real
+work to.
 
 She reads your project, makes the change, runs your tests, and fixes what fails. Then she
 **stops and shows you the diff.** Nothing touches your code until you've read it and said yes.
