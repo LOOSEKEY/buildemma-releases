@@ -84,7 +84,14 @@ changes in review.
 Everything else is inside: the editor, EMMA's engine, and language support for
 TypeScript, JavaScript and Python.
 
-**3. Open it.** You start in a `BuildEmma` folder in your home directory. To work on a real
+**3. Open it.** If there's no Ollama or no model on this computer yet, a short setup opens
+first. It checks what your machine has, offers to start Ollama or shows you where to get it,
+picks the biggest model your graphics card can run and downloads it (you can stop and pick up
+where you left off), then gives EMMA a small first task in a sample project, so you see a real
+change before you've written anything. If your setup already works, you'll never see it.
+**Help: Set Up Ollama and a Model…** brings it back.
+
+You start in a `BuildEmma` folder in your home directory. To work on a real
 project, use **Workspace: Open Folder…** in the command palette, or the folder button in the
 Explorer.
 
@@ -120,7 +127,23 @@ language server is installed; **Settings** lists each one and the command that i
 where the important code is.
 
 **Source Control** shows your changes, lets you stage and commit, and can draft the commit
-message from what you've staged.
+message from what you've staged. From 2.1.0 you can take work all the way to a pull request
+without leaving the app:
+
+- **Branches.** Click the branch name at the top to switch, search or create one. Build Emma
+  won't switch while EMMA is working, while her changes are waiting for your review, or while
+  a file has unsaved edits, because her changes were made for the branch you're on.
+- **Push** sends your commits, and **Publish** pushes a new branch for the first time. It uses
+  the git login you already have (Build Emma never asks for or keeps a password) and it never
+  force-pushes. If the remote says no, you're told why in plain words.
+- **Sync** brings in commits other people have pushed, as long as your branch can simply move
+  forward to them. If both sides have new work, it tells you rather than merging for you.
+- **Pull request.** On a branch with work of its own, **Review** has EMMA read the whole branch
+  and tell you what she'd flag (advice only: nothing is changed), and **Draft** has her write
+  the title and description. You can edit both, and they're saved with the branch as you type,
+  so both work offline. **Open PR** pushes the branch and opens the pull request: through
+  GitHub's `gh` tool if it's installed and signed in, otherwise GitHub's or GitLab's own page
+  opens in your browser, filled in. If you're offline, your draft waits for you.
 
 **Debugging.** Click beside a line number to set a breakpoint, then `F5`. While paused you get
 the call stack, variables and a watch list. `F10` step over, `F11` step into, `Shift+F11` step
@@ -285,8 +308,14 @@ pages and memory in the Models panel.
 **Plugins** add commands and EMMA tools. Put them in `.buildemma/plugins/` (one project) or
 `~/.config/buildemma/plugins/` (every project), or install from a file, folder or git repo in
 the **Plugins** section of the Models panel, which shows what each one can and can't do
-before you install it. They run
-sandboxed — **but only install plugins you trust.** **Plugins: Reload** picks up changes.
+before you install it. They run sandboxed, **but only use plugins you trust.**
+**Plugins: Reload** picks up changes.
+
+**A project's own plugins ask first.** Plugins that come inside a project, perhaps from
+someone else's repository, don't run until you say yes. Build Emma names the files and lets
+you open them to read first, and asks again if any of them change. **Plugins: Stop Running
+This Project's Plugins** takes your yes back. When EMMA uses a plugin's tool, whatever it
+writes becomes part of her changes, for you to review like everything else.
 
 ## Settings
 
@@ -333,8 +362,16 @@ file. **Nothing is sent anywhere** unless you set a destination yourself in
 ## Where your files live
 
 **In each project,** a `.buildemma` folder holds EMMA's notes, your standing orders, a record
-of her tasks, the search index, checkpoints and project plugins. Commit it or ignore it —
-your choice. Delete it and your code is untouched.
+of her tasks, the search index, checkpoints and project plugins. Delete it and your code is
+untouched.
+
+Some of it is worth sharing with whoever else works on the project, and some belongs to your
+computer alone. A `.gitignore` inside it sorts that out: your **standing orders, EMMA's notes,
+what her crew has learned, project settings and themes** are shared, and everything else stays
+out of git. That matters most for **checkpoints**, which are snapshots of your whole project
+and can include files like `.env`. To share more, edit `.buildemma/.gitignore`; Build Emma
+never changes it once it's there. If private files were committed before 2.1.0, Source Control
+points them out and can stop tracking them.
 
 **On your computer,** `~/.config/buildemma/` holds your settings, your keys (encrypted if you
 set a passphrase), trusted collaborators, your trial date and licence key, and the voice setup.
@@ -354,13 +391,21 @@ is in `launch.log`, which is worth attaching to any report:
 | **Linux** | `~/.local/share/dev.loosekey.buildemma/logs/launch.log` |
 | **Mac** | `~/Library/Logs/dev.loosekey.buildemma/launch.log` |
 
-**No models in the picker** — Ollama isn't running, or has no models. Try `ollama list`.
+**No models in the picker**, or **"Ollama isn't running"** — press **Start Ollama**, or run
+`ollama serve`. If it's running but has no models, **Open setup** gets you one. `ollama list`
+shows what's installed.
 
 **EMMA stops with "fetch failed"** — before 2.0.2, EMMA gave up if a model thought for more
 than five minutes in one step, which happens on smaller graphics cards. Update to 2.0.2 or
 later. **"…took longer than 20 minutes on one step"** means the model really was stuck, so
 EMMA stopped the task rather than wait forever. Try a faster model, or give her a smaller
 task. From 2.0.3 you can also press **Stop** yourself rather than wait.
+
+**The terminal says "File not found" on Windows** — fixed in 2.1.0; update. Until then, set a
+shell in **Settings → Terminal**, e.g. `powershell.exe`.
+
+**Source Control says "Git isn't installed"** — install git from [git-scm.com](https://git-scm.com),
+then press Refresh.
 
 **No errors underlined for Rust, Go and others** — install that language's server (Settings
 lists the command), then reopen the file.

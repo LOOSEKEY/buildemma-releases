@@ -49,6 +49,10 @@ So you know what you'd be testing against:
   never runs commands.
 - **A project you download can't reach outside its own folder** through links, and can't
   schedule EMMA to work unattended.
+- **A project's own plugins don't run until you say yes** to exactly those files, and they ask
+  again if anything in them changes. Before 2.1.0 they ran as soon as the project was opened.
+  Even after a yes, a plugin can only touch files while you're using it, and what it writes for
+  EMMA waits for your review.
 - **Sharing a session** needs a join code, the host's approval, and a limit on wrong guesses.
   A peer can't reach your shell unless you turn that on, and then a second switch for typing.
 - **Updates are signed**, and a tampered download is refused before anything is written.
@@ -59,5 +63,5 @@ So you know what you'd be testing against:
 
 - Anything that needs someone to already control your user account — at that point they have
   your files anyway.
-- Plugins you chose to install. They run sandboxed, but only install ones you trust.
+- Plugins you chose to install or said yes to. They run sandboxed, but only use ones you trust.
 - Cloud models you connect: what you send them is governed by that provider.
