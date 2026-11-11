@@ -21,6 +21,8 @@ work to.
 
 She reads your project, makes the change, runs your tests, and fixes what fails. Then she
 **stops and shows you the diff.** Nothing touches your code until you've read it and said yes.
+Give her several tasks at once and each gets a branch of its own, ending as a pull request,
+while your own files stay exactly as they are.
 
 `local-first · no account · no telemetry · works offline · cloud models optional`
 

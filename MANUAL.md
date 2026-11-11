@@ -179,7 +179,7 @@ and **asking before she runs any command**. When she's finished you get a **diff
 change, file by file, and you can untick any part you don't want. **Nothing is written until
 you approve it.**
 
-**To stop her,** press **Stop** next to *working…* (on Mac, in the next Mac version). She
+**To stop her,** press **Stop** next to *working…*. She
 stops at once, any command she was running ends with her, and anything she'd already changed
 comes back as a diff to approve or reject. Stopping never changes your files.
 
@@ -195,7 +195,33 @@ runs them against her changes before showing you, and fixes what fails. The badg
 tells you whether they pass. If she was asked for a change and made none, her summary says
 **No files were changed** first, so a confident-sounding reply can't hide an empty diff.
 
-The buttons by the message box:
+### Tasks on their own branches
+
+From 2.2.0, tick **On its own branch** under the message box (it's off until you do, and Build
+Emma remembers your choice). EMMA then works in a separate copy of your project, on a new
+branch named after the task. **Your own files don't change** while she works, while you review,
+or after: you can keep editing, and even switch branches yourself.
+
+- **Approve** commits what you kept to her branch. **Reject** removes the branch, as if the task
+  never ran.
+- The button reads **Start task**: the task runs in the background and the box is free for the
+  next one, so **several can run at once**. Each one shares your graphics card, so each is
+  slower than it would be alone.
+- **Tasks**, in EMMA's tab, lists them: running (with what she's doing now), waiting for your OK
+  to run a command, waiting for review, committed, rejected or failed. **Review** opens a
+  task's diff, **Stop** ends one that's running, and **Clear finished** tidies the list. A
+  command she wants to run waits five minutes for your OK, and isn't run if nobody answers.
+- **Follow up** asks for more on the same branch, on whichever model you pick now. She gets a
+  short summary of what was asked and done before.
+- **Open PR** or **Draft PR** on a committed task pushes its branch and opens a pull request,
+  the same way as in Source Control, without switching you to that branch. The title is the
+  task, and the description says what was asked and what she did. Then **View PR** opens it.
+- **The list survives a restart.** A task that was waiting for review can still be approved.
+
+Your project needs to be a git repository with at least one commit. Changes you haven't
+committed aren't in her copy, and Build Emma tells you so when you start.
+
+### The buttons by the message box
 
 | | |
 |---|---|
@@ -363,7 +389,9 @@ file. **Nothing is sent anywhere** unless you set a destination yourself in
 
 **In each project,** a `.buildemma` folder holds EMMA's notes, your standing orders, a record
 of her tasks, the search index, checkpoints and project plugins. Delete it and your code is
-untouched.
+untouched. Tasks on their own branches keep their working copies and their conversations
+inside the project's `.git` folder, which is never committed. The copy goes once a task is
+approved or rejected; the conversation stays with its branch.
 
 Some of it is worth sharing with whoever else works on the project, and some belongs to your
 computer alone. A `.gitignore` inside it sorts that out: your **standing orders, EMMA's notes,
